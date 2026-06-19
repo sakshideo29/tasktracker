@@ -88,25 +88,6 @@ spring.datasource.username=${DB_USERNAME}
 spring.datasource.password=${DB_PASSWORD}
 ```
 
-## Flyway Migrations
-
-Database migrations are managed using Flyway.
-
-Migration files are located in:
-
-```text
-src/main/resources/db/migration
-```
-
-Example:
-
-```text
-V1__create_tasks_table.sql
-V2__add_task_status.sql
-```
-
-Flyway automatically applies pending migrations during application startup.
-
 ## Health Monitoring
 
 Health endpoint:
