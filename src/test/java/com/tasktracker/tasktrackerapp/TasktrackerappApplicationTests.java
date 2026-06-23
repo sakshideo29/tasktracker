@@ -9,5 +9,4 @@ class TasktrackerappApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
