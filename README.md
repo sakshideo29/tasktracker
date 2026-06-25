@@ -75,7 +75,7 @@ The API uses standard HTTP status codes:
 Configure the following environment variables:
 
 ```bash
-DB_URL=jdbc:postgresql://localhost:5432/dev
+DB_URL=jdbc:postgresql://db:5432/dev
 DB_USERNAME=postgres
 DB_PASSWORD=root
 ```
