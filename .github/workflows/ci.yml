@@ -24,11 +24,7 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
 
-      - name: Build and run tests with coverage
-        run: mvn clean test jacoco:report
-
-      - name: Enforce test coverage (80%)
-        run: mvn jacoco:check
-
+      - name: Build + test + coverage gate
+        run: mvn clean verify
       - name: Build Docker image
         run: docker build -t tasktrackerapp:ci .
