@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: tasktracker
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: tasktracker
+
+  template:
+    metadata:
+      labels:
+        app: tasktracker
+
+    spec:
+      containers:
+        - name: tasktracker
+          image: IMAGE_PLACEHOLDER
+          ports:
+            - containerPort: 8080

@@ -9,18 +9,16 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 
-# ---------- RUNTIME STAGE (MINIMAL) ----------
+# ---------- RUNTIME STAGE ----------
 FROM eclipse-temurin:21-jre-jammy
 
 WORKDIR /app
 
-# create non-root user (security requirement)
+# non-root user
 RUN useradd -m appuser
 
-# copy only the final jar
 COPY --from=build /app/target/*.jar app.jar
 
-# reduce JVM overhead (small optimization)
 ENV JAVA_OPTS="-Xms128m -Xmx256m"
 
 USER appuser
