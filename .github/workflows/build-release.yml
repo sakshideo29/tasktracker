@@ -23,11 +23,13 @@ jobs:
       - name: Build Docker image
         run: docker build -t tasktrackerapp:${{ github.sha }} .
 
-      - name: Install Trivy
-        run: |
-          sudo apt-get install -y wget
-          wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.52.0_Linux-64bit.deb
-          sudo dpkg -i trivy_0.52.0_Linux-64bit.deb
+      - name: Scan Docker image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: tasktrackerapp:${{ github.sha }}
+          format: table
+          severity: HIGH,CRITICAL
+          exit-code: 1
 
       - name: Scan image (FAIL on HIGH/CRITICAL)
         run: |
